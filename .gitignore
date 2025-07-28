@@ -45,3 +45,5 @@
 # Misc
 Debug/
 Release/
+.mxproject
+.settings/
