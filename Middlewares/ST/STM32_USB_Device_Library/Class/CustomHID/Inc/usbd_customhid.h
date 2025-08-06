@@ -1,20 +1,20 @@
 /**
-  ******************************************************************************
-  * @file    usbd_customhid.h
-  * @author  MCD Application Team
-  * @brief   header file for the usbd_customhid.c file.
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2015 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
+ ******************************************************************************
+ * @file    usbd_customhid.h
+ * @author  MCD Application Team
+ * @brief   header file for the usbd_customhid.c file.
+ ******************************************************************************
+ * @attention
+ *
+ * Copyright (c) 2015 STMicroelectronics.
+ * All rights reserved.
+ *
+ * This software is licensed under terms that can be found in the LICENSE file
+ * in the root directory of this software component.
+ * If no LICENSE file comes with this software, it is provided AS-IS.
+ *
+ ******************************************************************************
+ */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __USB_CUSTOMHID_H
@@ -28,18 +28,18 @@ extern "C" {
 #include  "usbd_ioreq.h"
 
 /** @addtogroup STM32_USB_DEVICE_LIBRARY
-  * @{
-  */
+ * @{
+ */
 
 /** @defgroup USBD_CUSTOM_HID
-  * @brief This file is the Header file for USBD_customhid.c
-  * @{
-  */
+ * @brief This file is the Header file for USBD_customhid.c
+ * @{
+ */
 
 
 /** @defgroup USBD_CUSTOM_HID_Exported_Defines
-  * @{
-  */
+ * @{
+ */
 #ifndef CUSTOM_HID_EPIN_ADDR
 #define CUSTOM_HID_EPIN_ADDR                         0x81U
 #endif /* CUSTOM_HID_EPIN_ADDR */
@@ -72,7 +72,7 @@ extern "C" {
 #endif /* USBD_CUSTOMHID_OUTREPORT_BUF_SIZE */
 
 #ifndef USBD_CUSTOM_HID_REPORT_DESC_SIZE
-#define USBD_CUSTOM_HID_REPORT_DESC_SIZE             163U
+// #define USBD_CUSTOM_HID_REPORT_DESC_SIZE             163U
 #endif /* USBD_CUSTOM_HID_REPORT_DESC_SIZE */
 
 #define CUSTOM_HID_DESCRIPTOR_TYPE                   0x21U
@@ -87,13 +87,13 @@ extern "C" {
 #define CUSTOM_HID_REQ_SET_REPORT                    0x09U
 #define CUSTOM_HID_REQ_GET_REPORT                    0x01U
 /**
-  * @}
-  */
+ * @}
+ */
 
 
 /** @defgroup USBD_CORE_Exported_TypesDefinitions
-  * @{
-  */
+ * @{
+ */
 typedef enum
 {
   CUSTOM_HID_IDLE = 0U,
@@ -148,32 +148,32 @@ typedef struct
 } __PACKED USBD_DescTypeDef;
 
 /**
-  * @}
-  */
+ * @}
+ */
 
 
 
 /** @defgroup USBD_CORE_Exported_Macros
-  * @{
-  */
+ * @{
+ */
 
 /**
-  * @}
-  */
+ * @}
+ */
 
 /** @defgroup USBD_CORE_Exported_Variables
-  * @{
-  */
+ * @{
+ */
 
 extern USBD_ClassTypeDef USBD_CUSTOM_HID;
 #define USBD_CUSTOM_HID_CLASS &USBD_CUSTOM_HID
 /**
-  * @}
-  */
+ * @}
+ */
 
 /** @defgroup USB_CORE_Exported_Functions
-  * @{
-  */
+ * @{
+ */
 #ifdef USE_USBD_COMPOSITE
 uint8_t USBD_CUSTOM_HID_SendReport(USBD_HandleTypeDef *pdev,
                                    uint8_t *report, uint16_t len, uint8_t ClassId);
@@ -187,8 +187,8 @@ uint8_t USBD_CUSTOM_HID_RegisterInterface(USBD_HandleTypeDef *pdev,
                                           USBD_CUSTOM_HID_ItfTypeDef *fops);
 
 /**
-  * @}
-  */
+ * @}
+ */
 
 #ifdef __cplusplus
 }
@@ -196,10 +196,9 @@ uint8_t USBD_CUSTOM_HID_RegisterInterface(USBD_HandleTypeDef *pdev,
 
 #endif  /* __USB_CUSTOMHID_H */
 /**
-  * @}
-  */
+ * @}
+ */
 
 /**
-  * @}
-  */
-
+ * @}
+ */

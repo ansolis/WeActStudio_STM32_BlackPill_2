@@ -4,6 +4,18 @@ Projects for the WeActStudio BlackPill 2.0 board with STM32F411CEU6 MCU (100MHz,
 
 # Python Virtual Environment
 
+From Powershell, make sure you're running your most recently installed Python:
+
+```
+which python
+```
+
+Create a virtual environment:
+
+```
+python -m venv venv
+```
+
 Activate in PowerShell running as admin:
 
 ```
@@ -13,7 +25,7 @@ Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
 Regular Powershell:
 
 ```
-.\.venv\bin\Activate.ps1
+.\venv\Scripts\Activate.ps1
 ```
 
 Install pywinusb:

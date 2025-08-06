@@ -15,15 +15,18 @@ if devices:
 else:
     print("Device not found.")
 
-if not devices:
-    print("Can't find any non system HID device connected")
-else:
-    # search for our target usage
-    for device in devices:
+all_devices = hid.HidDeviceFilter().get_devices()
+if all_devices:
+    for device in all_devices:
         try:
             device.open()
-            # browse feature reports
-            for report in device.find_feature_reports():
-                print(report)
+            print(f"Vendor Name: {device.vendor_name}, Product Name: {device.product_name}")
+            print(f"Vendor ID: {hex(device.vendor_id)}, Product ID: {hex(device.product_id)}")
+            print(f"Version Number: {hex(device.version_number)}")
+            print("-" * 30)
+        except Exception as e:
+            print(f"Could not open device: {e}")
         finally:
             device.close()
+else:
+    print("No HID devices found.")
