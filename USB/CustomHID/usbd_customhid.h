@@ -98,17 +98,9 @@ typedef struct _USBD_CUSTOM_HID_Itf
 #endif /* USBD_CUSTOMHID_REPORT_DESC_SIZE_ENABLED */
   int8_t (* Init)(void);
   int8_t (* DeInit)(void);
-#ifdef USBD_CUSTOMHID_REPORT_BUFFER_EVENT_ENABLED
   int8_t (* OutEvent)(uint8_t *report_buffer);
-#else
-  int8_t (* OutEvent)(uint8_t event_idx, uint8_t state);
-#endif /* USBD_CUSTOMHID_REPORT_BUFFER_EVENT_ENABLED */
-#ifdef USBD_CUSTOMHID_CTRL_REQ_COMPLETE_CALLBACK_ENABLED
   int8_t (* CtrlReqComplete)(uint8_t request, uint16_t wLength);
-#endif /* USBD_CUSTOMHID_CTRL_REQ_COMPLETE_CALLBACK_ENABLED */
-#ifdef USBD_CUSTOMHID_CTRL_REQ_GET_REPORT_ENABLED
   uint8_t *(* GetReport)(uint16_t *ReportLength);
-#endif /* USBD_CUSTOMHID_CTRL_REQ_GET_REPORT_ENABLED */
 } USBD_CUSTOM_HID_ItfTypeDef;
 
 typedef struct

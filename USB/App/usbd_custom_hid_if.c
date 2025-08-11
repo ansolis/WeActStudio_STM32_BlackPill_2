@@ -131,18 +131,19 @@ extern USBD_HandleTypeDef hUsbDeviceFS;
 
 static int8_t CUSTOM_HID_Init_FS(void);
 static int8_t CUSTOM_HID_DeInit_FS(void);
-static int8_t CUSTOM_HID_OutEvent_FS(uint8_t event_idx, uint8_t state);
+static int8_t CUSTOM_HID_OutEvent_FS(uint8_t* report_buffer);
+int8_t CUSTOM_HID_CtrlReqComplete_FS(uint8_t request, uint16_t wLength);
+uint8_t* CUSTOM_HID_GetReport_FS(uint16_t *ReportLength);
 
-/**
- * @}
- */
 
 USBD_CUSTOM_HID_ItfTypeDef USBD_CustomHID_fops_FS =
 {
   CUSTOM_HID_ReportDesc_FS,
   CUSTOM_HID_Init_FS,
   CUSTOM_HID_DeInit_FS,
-  CUSTOM_HID_OutEvent_FS
+  CUSTOM_HID_OutEvent_FS,
+  CUSTOM_HID_CtrlReqComplete_FS,
+  CUSTOM_HID_GetReport_FS
 };
 
 /** @defgroup USBD_CUSTOM_HID_Private_Functions USBD_CUSTOM_HID_Private_Functions
@@ -176,10 +177,9 @@ static int8_t CUSTOM_HID_DeInit_FS(void)
  * @param  state: Event state
  * @retval USBD_OK if all operations are OK else USBD_FAIL
  */
-static int8_t CUSTOM_HID_OutEvent_FS(uint8_t event_idx, uint8_t state)
+static int8_t CUSTOM_HID_OutEvent_FS(uint8_t* report_buffer)
 {
-  UNUSED(event_idx);
-  UNUSED(state);
+  UNUSED(report_buffer);
 
   /* Start next USB packet transfer once data processing is completed */
   if (USBD_CUSTOM_HID_ReceivePacket(&hUsbDeviceFS) != (uint8_t)USBD_OK)
@@ -196,9 +196,19 @@ static int8_t CUSTOM_HID_OutEvent_FS(uint8_t event_idx, uint8_t state)
  * @param  len: The report length
  * @retval USBD_OK if all operations are OK else USBD_FAIL
  */
-/*
-static int8_t USBD_CUSTOM_HID_SendReport_FS(uint8_t *report, uint16_t len)
+int8_t USBD_CUSTOM_HID_SendReport_FS(uint8_t *report, uint16_t len)
 {
   return USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, report, len);
 }
-*/
+
+int8_t CUSTOM_HID_CtrlReqComplete_FS(uint8_t request, uint16_t wLength) {
+	// The return value isn't used and doesn't matter
+	return 0;
+}
+
+uint8_t* CUSTOM_HID_GetReport_FS(uint16_t *ReportLength) {
+	*ReportLength = 64;
+	// Just for testing
+	static uint8_t data[64] = {3, 1, 2, 3, 4, 5, 6, 7};
+	return data;
+}

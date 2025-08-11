@@ -59,6 +59,7 @@ extern const uint32_t CUSTOM_HID_ReportDesc_FS_size;
 /** @defgroup USBD_CUSTOM_HID_Exported_FunctionsPrototype USBD_CUSTOM_HID_Exported_FunctionsPrototype
   * @brief Public functions declaration.
   */
+int8_t USBD_CUSTOM_HID_SendReport_FS(uint8_t *report, uint16_t len);
 
 #ifdef __cplusplus
 }
