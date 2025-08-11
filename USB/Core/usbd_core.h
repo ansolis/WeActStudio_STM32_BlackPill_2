@@ -16,9 +16,7 @@
   ******************************************************************************
   */
 
-/* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __USBD_CORE_H
-#define __USBD_CORE_H
+#pragma once
 
 #ifdef __cplusplus
 extern "C" {
@@ -162,8 +160,6 @@ USBD_DescHeaderTypeDef *USBD_GetNextDesc(uint8_t *pbuf, uint16_t *ptr);
 }
 #endif
 
-#endif /* __USBD_CORE_H */
-
 /**
   * @}
   */
@@ -171,5 +167,3 @@ USBD_DescHeaderTypeDef *USBD_GetNextDesc(uint8_t *pbuf, uint16_t *ptr);
 /**
   * @}
   */
-
-

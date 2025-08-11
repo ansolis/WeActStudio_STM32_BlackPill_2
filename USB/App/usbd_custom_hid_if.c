@@ -1,4 +1,3 @@
-/* USER CODE BEGIN Header */
 /**
  ******************************************************************************
  * @file           : usbd_custom_hid_if.c
@@ -16,23 +15,16 @@
  *
  ******************************************************************************
  */
-/* USER CODE END Header */
 
 /* Includes ------------------------------------------------------------------*/
 #include "usbd_custom_hid_if.h"
-
-/* USER CODE BEGIN INCLUDE */
-
-/* USER CODE END INCLUDE */
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 
-/* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
 
-/* USER CODE END PV */
 
 /** @addtogroup STM32_USB_OTG_DEVICE_LIBRARY
  * @brief Usb device.
@@ -48,10 +40,6 @@
  * @{
  */
 
-/* USER CODE BEGIN PRIVATE_TYPES */
-
-/* USER CODE END PRIVATE_TYPES */
-
 /**
  * @}
  */
@@ -61,10 +49,6 @@
  * @{
  */
 
-/* USER CODE BEGIN PRIVATE_DEFINES */
-
-/* USER CODE END PRIVATE_DEFINES */
-
 /**
  * @}
  */
@@ -73,10 +57,6 @@
  * @brief Private macros.
  * @{
  */
-
-/* USER CODE BEGIN PRIVATE_MACRO */
-
-/* USER CODE END PRIVATE_MACRO */
 
 /**
  * @}
@@ -90,11 +70,6 @@
 /** Usb HID report descriptor. */
 __ALIGN_BEGIN static uint8_t CUSTOM_HID_ReportDesc_FS[] __ALIGN_END =
 {
-        // /* USER CODE BEGIN 0 */
-        // 0x00,
-        // /* USER CODE END 0 */
-        // 0xC0    /*     END_COLLECTION	             */
-
         0x06, 0x00, 0xFF, // USAGE_PAGE (Vendor Defined 0xFF00)
         0x09, 0x01,       // USAGE (1) <-- REQUIRED before COLLECTION
         0xA1, 0x01,       // COLLECTION (Application)
@@ -124,9 +99,7 @@ __ALIGN_BEGIN static uint8_t CUSTOM_HID_ReportDesc_FS[] __ALIGN_END =
         0xC0  // END_COLLECTION (Application)
 };
 
-/* USER CODE BEGIN PRIVATE_VARIABLES */
 const uint32_t CUSTOM_HID_ReportDesc_FS_size = sizeof(CUSTOM_HID_ReportDesc_FS);
-/* USER CODE END PRIVATE_VARIABLES */
 
 /**
  * @}
@@ -138,9 +111,6 @@ const uint32_t CUSTOM_HID_ReportDesc_FS_size = sizeof(CUSTOM_HID_ReportDesc_FS);
  */
 extern USBD_HandleTypeDef hUsbDeviceFS;
 
-/* USER CODE BEGIN EXPORTED_VARIABLES */
-
-/* USER CODE END EXPORTED_VARIABLES */
 /**
  * @}
  */
@@ -179,9 +149,7 @@ USBD_CUSTOM_HID_ItfTypeDef USBD_CustomHID_fops_FS =
  */
 static int8_t CUSTOM_HID_Init_FS(void)
 {
-  /* USER CODE BEGIN 4 */
   return (USBD_OK);
-  /* USER CODE END 4 */
 }
 
 /**
@@ -190,9 +158,7 @@ static int8_t CUSTOM_HID_Init_FS(void)
  */
 static int8_t CUSTOM_HID_DeInit_FS(void)
 {
-  /* USER CODE BEGIN 5 */
   return (USBD_OK);
-  /* USER CODE END 5 */
 }
 
 /**
@@ -203,7 +169,6 @@ static int8_t CUSTOM_HID_DeInit_FS(void)
  */
 static int8_t CUSTOM_HID_OutEvent_FS(uint8_t event_idx, uint8_t state)
 {
-  /* USER CODE BEGIN 6 */
   UNUSED(event_idx);
   UNUSED(state);
 
@@ -214,10 +179,8 @@ static int8_t CUSTOM_HID_OutEvent_FS(uint8_t event_idx, uint8_t state)
   }
 
   return (USBD_OK);
-  /* USER CODE END 6 */
 }
 
-/* USER CODE BEGIN 7 */
 /**
  * @brief  Send the report to the Host
  * @param  report: The report to be sent
@@ -230,19 +193,3 @@ static int8_t USBD_CUSTOM_HID_SendReport_FS(uint8_t *report, uint16_t len)
   return USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, report, len);
 }
 */
-/* USER CODE END 7 */
-
-/* USER CODE BEGIN PRIVATE_FUNCTIONS_IMPLEMENTATION */
-
-/* USER CODE END PRIVATE_FUNCTIONS_IMPLEMENTATION */
-/**
- * @}
- */
-
-/**
- * @}
- */
-
-/**
- * @}
- */

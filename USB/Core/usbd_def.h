@@ -16,9 +16,7 @@
   ******************************************************************************
   */
 
-/* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __USBD_DEF_H
-#define __USBD_DEF_H
+#pragma once
 
 #ifdef __cplusplus
 extern "C" {
@@ -511,14 +509,3 @@ __STATIC_INLINE uint16_t SWAPBYTE(uint8_t *addr)
 #ifdef __cplusplus
 }
 #endif
-
-#endif /* __USBD_DEF_H */
-
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */
-

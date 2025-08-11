@@ -16,9 +16,7 @@
   ******************************************************************************
   */
 
-/* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __USBD_IOREQ_H
-#define __USBD_IOREQ_H
+#pragma once
 
 #ifdef __cplusplus
 extern "C" {
@@ -101,8 +99,6 @@ uint32_t USBD_GetRxCount(USBD_HandleTypeDef *pdev, uint8_t ep_addr);
 }
 #endif
 
-#endif /* __USBD_IOREQ_H */
-
 /**
   * @}
   */
@@ -110,4 +106,3 @@ uint32_t USBD_GetRxCount(USBD_HandleTypeDef *pdev, uint8_t ep_addr);
 /**
   * @}
   */
-
