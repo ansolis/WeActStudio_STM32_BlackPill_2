@@ -1,4 +1,4 @@
-/* USER CODE BEGIN Header */
+
 /**
   ******************************************************************************
   * @file           : usbd_conf.h
@@ -33,10 +33,6 @@
 #include "main.h"
 #include "stm32f4xx.h"
 #include "stm32f4xx_hal.h"
-
-/* USER CODE BEGIN INCLUDE */
-
-/* USER CODE END INCLUDE */
 
 /** @addtogroup USBD_OTG_DRIVER
   * @brief Driver for Usb device.
