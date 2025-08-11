@@ -79,7 +79,7 @@ __ALIGN_BEGIN static uint8_t CUSTOM_HID_ReportDesc_FS[] __ALIGN_END =
 
         // Input Report (Report ID 1)
         0x85, 0x01,       //   REPORT_ID (1)
-        0x95, 0x01,       //   REPORT_COUNT (1)
+        0x95, 0x3F,       //   REPORT_COUNT (63)
         0x75, 0x08,       //   REPORT_SIZE (8)
         0x15, 0x00,       //   LOGICAL_MINIMUM (0)
         0x26, 0xFF, 0x00, //   LOGICAL_MAXIMUM (255)
@@ -88,12 +88,21 @@ __ALIGN_BEGIN static uint8_t CUSTOM_HID_ReportDesc_FS[] __ALIGN_END =
 
         // Output Report (Report ID 2)
         0x85, 0x02,       //   REPORT_ID (2)
-        0x95, 0x01,       //   REPORT_COUNT (1)
+        0x95, 0x3F,       //   REPORT_COUNT (63)
         0x75, 0x08,       //   REPORT_SIZE (8)
         0x15, 0x00,       //   LOGICAL_MINIMUM (0)
         0x26, 0xFF, 0x00, //   LOGICAL_MAXIMUM (255)
         0x09, 0x02,       //   USAGE (2)
         0x91, 0x02,       //   OUTPUT (Data,Var,Abs)
+
+        // Feature Report (Report ID 3)
+        0x85, 0x03,       //   REPORT_ID (3)
+        0x95, 0x3F,       //   REPORT_COUNT (63)
+        0x75, 0x08,       //   REPORT_SIZE (8)
+        0x15, 0x00,       //   LOGICAL_MINIMUM (0)
+        0x26, 0xFF, 0x00, //   LOGICAL_MAXIMUM (255)
+        0x09, 0x03,       //   USAGE (3)
+        0xB1, 0x02,       //   FEATURE (Data,Var,Abs)
 
         0xC0, // END_COLLECTION (Physical)
         0xC0  // END_COLLECTION (Application)
