@@ -19,12 +19,11 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "cmsis_os.h"
-#include "usb_device.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "usb_device.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -91,7 +90,6 @@ int main(void)
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
 
-//  HAL_Delay(1500);
   MX_USB_DEVICE_Init();
 
   /* USER CODE END 2 */
@@ -112,6 +110,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	// We should never get here
   }
   /* USER CODE END 3 */
 }
