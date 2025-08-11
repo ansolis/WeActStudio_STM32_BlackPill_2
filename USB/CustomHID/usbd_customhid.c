@@ -45,6 +45,7 @@ EndBSPDependencies */
 /* Includes ------------------------------------------------------------------*/
 #include "usbd_customhid.h"
 #include "usbd_ctlreq.h"
+#include "usbd_custom_hid_if.h"
 
 
 /** @addtogroup STM32_USB_DEVICE_LIBRARY
@@ -170,8 +171,8 @@ __ALIGN_BEGIN static uint8_t USBD_CUSTOM_HID_CfgDesc[USB_CUSTOM_HID_CONFIG_DESC_
   0x01,                                               /* bNumDescriptors: Number of CUSTOM_HID class descriptors
                                                          to follow */
   0x22,                                               /* bDescriptorType */
-  LOBYTE(USBD_CUSTOM_HID_REPORT_DESC_SIZE),           /* wItemLength: Total length of Report descriptor */
-  HIBYTE(USBD_CUSTOM_HID_REPORT_DESC_SIZE),
+  0,                                                  /* wItemLength: Total length of Report descriptor - to be defined later */
+  0,
   /******************** Descriptor of Custom HID endpoints ********************/
   /* 27 */
   0x07,                                               /* bLength: Endpoint Descriptor size */
@@ -207,8 +208,8 @@ __ALIGN_BEGIN static uint8_t USBD_CUSTOM_HID_Desc[USB_CUSTOM_HID_DESC_SIZ] __ALI
   0x01,                                               /* bNumDescriptors: Number of CUSTOM_HID class descriptors
                                                          to follow */
   0x22,                                               /* bDescriptorType */
-  LOBYTE(USBD_CUSTOM_HID_REPORT_DESC_SIZE),                   /* wItemLength: Total length of Report descriptor */
-  HIBYTE(USBD_CUSTOM_HID_REPORT_DESC_SIZE),
+  0,                                                  /* wItemLength: Total length of Report descriptor - to be defined later */
+  0,
 };
 
 #ifndef USE_USBD_COMPOSITE
@@ -480,7 +481,7 @@ static uint8_t USBD_CUSTOM_HID_Setup(USBD_HandleTypeDef *pdev,
         case USB_REQ_GET_DESCRIPTOR:
           if ((req->wValue >> 8) == CUSTOM_HID_REPORT_DESC)
           {
-            len = MIN(USBD_CUSTOM_HID_REPORT_DESC_SIZE, req->wLength);
+            len = MIN(CUSTOM_HID_ReportDesc_FS_size, req->wLength);
             pbuf = ((USBD_CUSTOM_HID_ItfTypeDef *)pdev->pUserData[pdev->classId])->pReport;
           }
           else
@@ -815,6 +816,14 @@ uint8_t USBD_CUSTOM_HID_RegisterInterface(USBD_HandleTypeDef *pdev,
 
   pdev->pUserData[pdev->classId] = fops;
 
+  // HID report descriptor size needs to be updated to the actual descriptor size
+  USBD_DescTypeDef* hid_class_desc;
+  hid_class_desc = (USBD_DescTypeDef*)&USBD_CUSTOM_HID_CfgDesc[18];
+  hid_class_desc->wItemLength = CUSTOM_HID_ReportDesc_FS_size;
+
+  hid_class_desc = (USBD_DescTypeDef*)&USBD_CUSTOM_HID_Desc;
+  hid_class_desc->wItemLength = CUSTOM_HID_ReportDesc_FS_size;
+
   return (uint8_t)USBD_OK;
 }
 /**
@@ -830,4 +839,3 @@ uint8_t USBD_CUSTOM_HID_RegisterInterface(USBD_HandleTypeDef *pdev,
 /**
   * @}
   */
-

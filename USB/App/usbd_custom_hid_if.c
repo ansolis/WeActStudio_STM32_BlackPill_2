@@ -88,7 +88,7 @@
  */
 
 /** Usb HID report descriptor. */
-__ALIGN_BEGIN static uint8_t CUSTOM_HID_ReportDesc_FS[USBD_CUSTOM_HID_REPORT_DESC_SIZE] __ALIGN_END =
+__ALIGN_BEGIN static uint8_t CUSTOM_HID_ReportDesc_FS[] __ALIGN_END =
 {
         // /* USER CODE BEGIN 0 */
         // 0x00,
@@ -125,7 +125,7 @@ __ALIGN_BEGIN static uint8_t CUSTOM_HID_ReportDesc_FS[USBD_CUSTOM_HID_REPORT_DES
 };
 
 /* USER CODE BEGIN PRIVATE_VARIABLES */
-
+const uint32_t CUSTOM_HID_ReportDesc_FS_size = sizeof(CUSTOM_HID_ReportDesc_FS);
 /* USER CODE END PRIVATE_VARIABLES */
 
 /**

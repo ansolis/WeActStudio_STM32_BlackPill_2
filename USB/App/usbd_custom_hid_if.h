@@ -19,8 +19,7 @@
 /* USER CODE END Header */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __USBD_CUSTOM_HID_IF_H__
-#define __USBD_CUSTOM_HID_IF_H__
+#pragma once
 
 #ifdef __cplusplus
  extern "C" {
@@ -91,7 +90,7 @@
 extern USBD_CUSTOM_HID_ItfTypeDef USBD_CustomHID_fops_FS;
 
 /* USER CODE BEGIN EXPORTED_VARIABLES */
-
+extern const uint32_t CUSTOM_HID_ReportDesc_FS_size;
 /* USER CODE END EXPORTED_VARIABLES */
 
 /**
@@ -122,6 +121,3 @@ extern USBD_CUSTOM_HID_ItfTypeDef USBD_CustomHID_fops_FS;
 #ifdef __cplusplus
 }
 #endif
-
-#endif /* __USBD_CUSTOM_HID_IF_H__ */
-

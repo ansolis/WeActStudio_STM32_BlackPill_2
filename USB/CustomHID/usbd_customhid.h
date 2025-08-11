@@ -17,8 +17,7 @@
  */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __USB_CUSTOMHID_H
-#define __USB_CUSTOMHID_H
+#pragma once
 
 #ifdef __cplusplus
 extern "C" {
@@ -63,17 +62,9 @@ extern "C" {
 #define CUSTOM_HID_HS_BINTERVAL                      0x05U
 #endif /* CUSTOM_HID_HS_BINTERVAL */
 
-#ifndef CUSTOM_HID_FS_BINTERVAL
-#define CUSTOM_HID_FS_BINTERVAL                      0x05U
-#endif /* CUSTOM_HID_FS_BINTERVAL */
-
 #ifndef USBD_CUSTOMHID_OUTREPORT_BUF_SIZE
 #define USBD_CUSTOMHID_OUTREPORT_BUF_SIZE            0x02U
 #endif /* USBD_CUSTOMHID_OUTREPORT_BUF_SIZE */
-
-#ifndef USBD_CUSTOM_HID_REPORT_DESC_SIZE
-// #define USBD_CUSTOM_HID_REPORT_DESC_SIZE             163U
-#endif /* USBD_CUSTOM_HID_REPORT_DESC_SIZE */
 
 #define CUSTOM_HID_DESCRIPTOR_TYPE                   0x21U
 #define CUSTOM_HID_REPORT_DESC                       0x22U
@@ -194,7 +185,6 @@ uint8_t USBD_CUSTOM_HID_RegisterInterface(USBD_HandleTypeDef *pdev,
 }
 #endif
 
-#endif  /* __USB_CUSTOMHID_H */
 /**
  * @}
  */
