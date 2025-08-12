@@ -61,10 +61,6 @@ extern "C" {
 #define CUSTOM_HID_HS_BINTERVAL                      0x05U
 #endif /* CUSTOM_HID_HS_BINTERVAL */
 
-#ifndef USBD_CUSTOMHID_OUTREPORT_BUF_SIZE
-#define USBD_CUSTOMHID_OUTREPORT_BUF_SIZE            0x02U
-#endif /* USBD_CUSTOMHID_OUTREPORT_BUF_SIZE */
-
 #define CUSTOM_HID_DESCRIPTOR_TYPE                   0x21U
 #define CUSTOM_HID_REPORT_DESC                       0x22U
 

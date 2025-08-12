@@ -15,8 +15,12 @@ if devices:
     report_id = 3
     report = next((r for r in feature_report if r.report_id == report_id), None)
     if report:
+        buf = [report_id] + list(range(0, 63))
+        report.send(buf)
+        print(f"Sent Feature Report {report_id}: {buf}")
+        # Optionally, read back to verify
         data = report.get()
-        print(f"Feature Report {report_id} data (len={len(data)}): {data}")
+        print(f"Read Feature Report {report_id} data (len={len(data)}): {data}")
     else:
         print(f"Feature Report {report_id} not found.")
     device.close()
