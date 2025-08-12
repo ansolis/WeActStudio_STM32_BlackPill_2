@@ -25,7 +25,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "usbd_custom_hid_if.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -132,12 +132,20 @@ void MX_FREERTOS_Init(void) {
 void StartDefaultTask(void *argument)
 {
   /* USER CODE BEGIN StartDefaultTask */
+	static uint8_t input_report_data[64];
+	input_report_data[0] = 1; // Input report ID
+	for (int i = 0; i < 63; i++) {
+		input_report_data[i + 1] = i;
+	}
+
   /* Infinite loop */
-  for(;;)
-  {
-    HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-    osDelay(300);
-  }
+	for(;;)
+	{
+		HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+		osDelay(300);
+
+		USBD_CUSTOM_HID_SendReport_FS(input_report_data, sizeof(input_report_data));
+	}
   /* USER CODE END StartDefaultTask */
 }
 

@@ -27,18 +27,28 @@ if devices:
 else:
     print("Device not found.")
 
-# all_devices = hid.HidDeviceFilter().get_devices()
-# if all_devices:
-#     for device in all_devices:
-#         try:
-#             device.open()
-#             print(f"Vendor Name: {device.vendor_name}, Product Name: {device.product_name}")
-#             print(f"Vendor ID: {hex(device.vendor_id)}, Product ID: {hex(device.product_id)}")
-#             print(f"Version Number: {hex(device.version_number)}")
-#             print("-" * 30)
-#         except Exception as e:
-#             print(f"Could not open device: {e}")
-#         finally:
-#             device.close()
-# else:
-#     print("No HID devices found.")
+
+def input_report_handler(data):
+    print(f"Received Input Report (len={len(data)}): {data}")
+
+
+# Print an input report
+if devices:
+    device = devices[0]
+    device.open()
+
+    # Set up input report handler for report ID 1 (first byte == 1)
+    device.set_raw_data_handler(
+        lambda data: input_report_handler(data) if data[0] == 1 else None
+    )
+
+    print("Waiting for input report with ID 1 (press Ctrl+C to exit)...")
+    try:
+        import time
+        while True:
+            time.sleep(0.1)
+    except KeyboardInterrupt:
+        print("Exiting.")
+    device.close()
+else:
+    print("Device not found.")
