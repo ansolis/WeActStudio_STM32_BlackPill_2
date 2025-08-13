@@ -174,9 +174,9 @@ static int8_t CUSTOM_HID_DeInit_FS(void)
 }
 
 /**
- * @brief  Manage the CUSTOM HID class events
+ * @brief  Receives feature report or output reports
  *
- * This is where feature and output reports are
+ * This is where feature and output reports are received from the host
  *
  * @param  report_buffer   report data buffer of size CUSTOM_HID_EPOUT_SIZE
  *                         or USBD_CUSTOMHID_OUTREPORT_BUF_SIZE
