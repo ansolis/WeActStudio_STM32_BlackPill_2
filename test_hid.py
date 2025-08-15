@@ -11,7 +11,8 @@ FEATURE_REPORT_ID = 3
 def main():
     device = find_device(VID, PID)
     if device is None:
-        print("Device not found.")
+        print("ERROR: Device not found.")
+        return
 
     print(f"Device Name: {device.product_name}")
 
